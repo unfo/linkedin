@@ -13,7 +13,7 @@ begin
     gem.files   = FileList["[A-Z]*", "{lib,test}/**/*"]
     
     
-    gem.add_dependency('oauth', '~> 0.3.5')
+    gem.add_dependency('oauth', '= 0.4.1')
     gem.add_dependency('roxml', '~> 3.1.3')
     gem.add_dependency('crack', '~> 0.1.4')
 

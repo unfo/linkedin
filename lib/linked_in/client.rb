@@ -58,6 +58,14 @@ module LinkedIn
       response
     end
     
+    def post(path, options={})
+      path = "/v1#{path}"
+      # Content-type needs to be set elsewhere
+      response = access_token.post(path, options, { 'Content-Type' => 'text/xml' })
+      raise_errors(response)
+      response
+    end      
+    
     def delete(path, options={})
       path = "/v1#{path}"
       response = access_token.delete(path, options)
@@ -128,6 +136,13 @@ module LinkedIn
       Network.from_xml(get(to_uri(path, options)))
     end
     
+    def send_message(options={})
+      # You must provide at least a single recipient
+      raise ArgumentError unless options[:recipient_paths] && options[:recipient_paths].size > 0
+      mailbox_item = MailboxItem.new(options)
+      path = "/people/~/mailbox"
+      post(path, "<?xml version='1.0' encoding='UTF-8'?>\n" + mailbox_item.to_xml.to_s)
+    end
     
     
     

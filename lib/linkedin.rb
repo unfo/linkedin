@@ -1,7 +1,7 @@
 # require 'forwardable'
 require 'rubygems'
 
-gem 'oauth', '~> 0.3.5'
+gem 'oauth', '= 0.4.1'
 require 'oauth'
 
 gem 'roxml', '~> 3.1.3'
@@ -81,3 +81,7 @@ require File.join(directory, 'linked_in', 'network')
 require File.join(directory, 'linked_in', 'people')
 require File.join(directory, 'linked_in', 'connections')
 require File.join(directory, 'linked_in', 'client')
+require File.join(directory, 'linked_in', 'person')
+require File.join(directory, 'linked_in', 'recipient')
+require File.join(directory, 'linked_in', 'recipients')
+require File.join(directory, 'linked_in', 'mailbox_item')
