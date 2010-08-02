@@ -4,8 +4,8 @@ module LinkedIn
     
     xml_accessor :path, :from => '@path'
     
-    def initialize(person_path)
-      @path = person_path
+    def initialize(id)
+      @path = '/people/%s' % id
     end
   end
 end

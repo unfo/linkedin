@@ -137,8 +137,10 @@ module LinkedIn
     end
     
     def send_message(options={})
-      # You must provide at least a single recipient
-      raise ArgumentError unless options[:recipient_paths] && options[:recipient_paths].size > 0
+      raise ArgumentError.new("You must provide at least a single recipient") unless options[:recipients] && options[:recipients].size > 0
+      raise ArgumentError.new("Subject must not be blank")                    unless options[:subject]    && options[:subject].size > 0
+      raise ArgumentError.new("Body must not be blank")                       unless options[:body]       && options[:body].size > 0
+      
       mailbox_item = MailboxItem.new(options)
       path = "/people/~/mailbox"
       post(path, "<?xml version='1.0' encoding='UTF-8'?>\n" + mailbox_item.to_xml.to_s)

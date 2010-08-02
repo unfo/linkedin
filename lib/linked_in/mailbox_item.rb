@@ -7,13 +7,13 @@ module LinkedIn
     xml_accessor :recipients, :as => Recipients
     
     def initialize(opts={})
-      defaults = { :subject => '', :body => '', :recipient_paths => [] }
+      defaults = { :subject => '', :body => '', :recipients => [] }
       opts = defaults.merge(opts)
       @subject = opts[:subject]
       @body = opts[:body]
       @recipients = Recipients.new
-      opts[:recipient_paths].each do |recipient_path|
-        @recipients << Recipient.new(Person.new(recipient_path))
+      opts[:recipients].each do |id|
+        @recipients << Recipient.new(Person.new(id))
       end
     end
   end
